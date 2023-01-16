@@ -1,24 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <h1>inventory page</h1>
-<p>{% for player in players %}
-    {{ player.name }}
-    {% endfor %}
-</p>
+
 <div class="container-flex" id="backback">
-    <ul>backback
-    {% for item in attack_items %}
-    <li>{{ item.name }} </li>
+    <h2>backpack</h2>
+    {% for item in items %}
+    <div class="data-model" id="{{ item.id }}">
+        <p>{{ item.name }}</p>
+        <p>{{item.attack}}/{{item.defense}}</p>
+        <!-- <img src="{% static 'stick.png' %}" alt="{{item.name}}" class="image-fluid"> -->
+        <button type="button" class="btnMove btn-primary">equip</button>
+    </div>
     {% endfor %}
-    {% for item in defense_items %}
-    <li>{{ item.name }}</li>
-    {% endfor %}
-    </ul>
-</div>
-
-<div class="container-flex" id="equipped">
-    <ul>equipped items
 
     </ul>
 </div>
+
+<div class="container-flex" id="equipped_area">
+    <h3>equipped items</h3>
+</div>
+<button class="btn btn-primary" onclick="fight_page()" id="fight_button">fight</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'functionality.js' %}"></script>
 {% endblock %}

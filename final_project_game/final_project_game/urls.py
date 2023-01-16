@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main_game_app import views
+from main_game_app.views import inventory
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.landing, name='landing'),
-    path('inventory', views.inventory, name='inventory_page'),
+    path('inventory/', inventory.as_view(), name='inventory_page'),
+    path('fight/', views.fight, name='fight_page'),
+    path('move-data/', views.move_data, name="move_data")
 ]
